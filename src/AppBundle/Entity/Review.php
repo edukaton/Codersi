@@ -189,4 +189,9 @@ class Review
     {
         return $this->answers;
     }
+
+    public function __toString()
+    {
+        return $this->content;
+    }
 }
