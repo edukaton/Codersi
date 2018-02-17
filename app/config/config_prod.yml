@@ -1,5 +1,6 @@
 imports:
     - { resource: config.yml }
+    - { resource: config_prod_secrets.php }
 
 #doctrine:
 #    orm:
@@ -20,3 +21,9 @@ monolog:
         console:
             type: console
             process_psr_3_messages: false
+
+
+framework:
+    session:
+        # set handler_id to null to use default session handler from php.ini (memcached)
+        handler_id:  ~
