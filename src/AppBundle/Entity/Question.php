@@ -42,6 +42,19 @@ class Question
      */
     private $extDesc;
 
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="DictType", inversedBy="question")
+     * @ORM\JoinColumn(name="dict_type_id", referencedColumnName="id")
+     */
+    private $type;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Review", inversedBy="question")
+     * @ORM\JoinColumn(name="review_id", referencedColumnName="id")
+     */
+    private $review;
 
     /**
      * Get id
@@ -124,5 +137,52 @@ class Question
     {
         return $this->extDesc;
     }
-}
 
+    /**
+     * Set type
+     *
+     * @param \AppBundle\Entity\DictType $type
+     *
+     * @return Question
+     */
+    public function setType(\AppBundle\Entity\DictType $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \AppBundle\Entity\DictType
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set review
+     *
+     * @param \AppBundle\Entity\Review $review
+     *
+     * @return Question
+     */
+    public function setReview(\AppBundle\Entity\Review $review = null)
+    {
+        $this->review = $review;
+
+        return $this;
+    }
+
+    /**
+     * Get review
+     *
+     * @return \AppBundle\Entity\Review
+     */
+    public function getReview()
+    {
+        return $this->review;
+    }
+}

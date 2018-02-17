@@ -63,4 +63,3 @@ class DictType
         return $this->type;
     }
 }
-

@@ -42,6 +42,36 @@ class Review
      */
     private $content;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection|UserGroup[]
+     *
+     * @ORM\ManyToMany(targetEntity="Answer", inversedBy="reviews")
+     * @ORM\JoinTable(
+     *  name="review_answer",
+     *  joinColumns={
+     *      @ORM\JoinColumn(name="review_id", referencedColumnName="id")
+     *  },
+     *  inverseJoinColumns={
+     *      @ORM\JoinColumn(name="answer_id", referencedColumnName="id")
+     *  }
+     * )
+     */
+    protected $answers;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Question", inversedBy="review")
+     */
+    private $question;
+
+    /**
+     * Default constructor, initializes collections
+     */
+    public function __construct()
+    {
+        $this->answers = new ArrayCollection();
+    }
+
 
     /**
      * Get id
@@ -124,5 +154,38 @@ class Review
     {
         return $this->content;
     }
-}
 
+    /**
+     * Add answer
+     *
+     * @param \AppBundle\Entity\Answer $answer
+     *
+     * @return Review
+     */
+    public function addAnswer(\AppBundle\Entity\Answer $answer)
+    {
+        $this->answers[] = $answer;
+
+        return $this;
+    }
+
+    /**
+     * Remove answer
+     *
+     * @param \AppBundle\Entity\Answer $answer
+     */
+    public function removeAnswer(\AppBundle\Entity\Answer $answer)
+    {
+        $this->answers->removeElement($answer);
+    }
+
+    /**
+     * Get answers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
+}
