@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dicttypes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dictType in dictTypes %}
+            <tr>
+                <td><a href="{{ path('dicttype_show', { 'id': dictType.id }) }}">{{ dictType.id }}</a></td>
+                <td>{{ dictType.type }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('dicttype_show', { 'id': dictType.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('dicttype_edit', { 'id': dictType.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dicttype_new') }}">Create a new dictType</a>
+        </li>
+    </ul>
+{% endblock %}

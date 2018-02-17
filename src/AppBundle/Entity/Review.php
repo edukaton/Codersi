@@ -60,7 +60,7 @@ class Review
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="Question", inversedBy="review")
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="review")
      */
     private $question;
 

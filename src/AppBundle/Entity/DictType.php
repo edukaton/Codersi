@@ -28,6 +28,18 @@ class DictType
      */
     private $type;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="type")
+     */
+    private $question;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Answer", mappedBy="type")
+     */
+    private $answer;
+
 
     /**
      * Get id
