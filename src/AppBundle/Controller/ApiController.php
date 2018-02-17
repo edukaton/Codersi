@@ -50,4 +50,14 @@ class ApiController extends Controller
             'question' => $jsonquestions
             ]);
     }
+
+    /**
+     * @Route("/test", name="api_test")
+     * @Method("GET")
+     */
+    public function testAction(Request $request){
+        return new JsonResponse([
+            'data' => 'ok'
+        ]);
+    }
 }
